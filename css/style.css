@@ -1,0 +1,79 @@
+:root {
+    /* color variables*/
+    --line-color: hsl(234, 12%, 35%);
+    --active-color: hsl(234, 100%, 98%);
+    --inactive-color: hsl(234, 20%, 68%);
+    --body-color: hsl(234, 12%, 8%);
+}
+
+body {
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    background-color: var(--body-color);
+}
+
+.toggle__content {
+    display: grid;
+    gap: 1.5rem;
+    background-color: var(--body-color);
+    padding: 4rem;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 .59px var(--inactive-color);
+}
+
+.toggle__label {
+    cursor: pointer;
+    padding-block: .5rem;
+}
+
+.toggle__check {
+    display: none;
+}
+
+.toggle__rail {
+    position: relative;
+    width: 52px;
+    height: 4px;
+    background-color: var(--line-color);
+    border-radius: 2rem;
+}
+
+.toggle__circle {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-color: var(--body-color);
+    box-shadow: inset 0 0 0 4px var(--inactive-color);
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    transition: transform .4s, box-shadow .4s;
+    z-index: 2;
+}
+
+.toggle__border {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    background-color: var(--body-color);
+    border-radius: 50%;
+    left: -4px;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    transition: transform .4s;
+}
+
+/* toggle animation */
+
+.toggle__check:checked ~ .toggle__rail .toggle__circle {
+    transform: translateX(28px);
+    box-shadow: inset 0 0 0 12px var(--active-color);
+}
+.toggle__check:checked ~ .toggle__rail .toggle__border {
+    transform: translateX(28px);
+}
